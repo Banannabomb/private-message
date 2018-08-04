@@ -12,7 +12,7 @@ var passphraseArray: [String] = []
 class showCreateAPassphraseViewController: UIViewController {
     
     @IBOutlet weak var passphraseTextView: UITextView!
-    //var passphraseArray: [String?] = []
+    var passphraseArray: [String?] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
