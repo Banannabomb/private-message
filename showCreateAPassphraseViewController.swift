@@ -8,18 +8,18 @@
 
 import Foundation
 import UIKit
-var passphraseArray: [String] = []
+import CoreData
+var passphraseArray: [String?] = []
 class showCreateAPassphraseViewController: UIViewController {
     
     @IBOutlet weak var passphraseTextView: UITextView!
-    var passphraseArray: [String?] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        passphraseTextView.text = ""
+        passphraseTextView.text = nil
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,14 +30,17 @@ class showCreateAPassphraseViewController: UIViewController {
         guard let identifier = segue.identifier else { return }
         
         switch identifier {
-        case "save":
-            let passphrase = Passphrase()
-            //print("save bar button item tapped")
-            passphrase.content = passphraseTextView.text ?? ""
-            passphraseArray.append(passphrase.content)
-        case "cancel":
+        case "saveCreateAPassphrase":
+            if passphraseTextView.text == nil {
+                
+            }
+            let passphrase = Content1(passphraseContent: passphraseTextView.text)
+            print("save bar button item tapped")
+            passphrase?.passphraseContent = passphraseTextView.text ?? ""
+            print(passphrase?.passphraseContent)
+            passphraseArray.append(passphrase?.passphraseContent)
+        case "cancelCreateAPassphrase":
             print("cancel bar button item tapped")
-            
         default:
             print("unexpected segue identifier")
         }
